@@ -1,8 +1,10 @@
-import React from "react";
-import { CircleCheckBig } from "lucide-react";
+import React, { useState } from "react";
+import { CircleCheckBig, X } from "lucide-react";
 import { Services } from "../global";
 
 const PPFServices = ({ title = "OUR SERVICES", services = Services }) => {
+  const [showPopup, setShowPopup] = useState(false);
+
   return (
     <div id="services" className="bg-[#F3F4F6] dark:bg-black py-12">
       <div className="max-w-7xl mx-auto">
@@ -48,7 +50,10 @@ const PPFServices = ({ title = "OUR SERVICES", services = Services }) => {
                   </ul>
                 </div>
 
-                <button className="w-full bg-primary text-white font-semibold py-3 rounded-lg hover:scale-105 transition">
+                <button
+                  onClick={() => setShowPopup(true)}
+                  className="w-full bg-primary text-white font-semibold py-3 rounded-lg hover:scale-105 transition"
+                >
                   BOOK TODAY
                 </button>
               </div>
@@ -57,6 +62,60 @@ const PPFServices = ({ title = "OUR SERVICES", services = Services }) => {
         </div>
 
       </div>
+
+      {/* ================= POPUP MODAL ================= */}
+      {showPopup && (
+        <div className="fixed inset-0 z-50 bg-black/60 flex items-center justify-center px-4">
+          <div className="bg-white dark:bg-neutral-900 max-w-lg w-full rounded-2xl p-6 sm:p-8 relative animate-scaleIn">
+
+            {/* Close */}
+            <button
+              onClick={() => setShowPopup(false)}
+              className="absolute top-4 right-4 text-gray-400 hover:text-primary"
+            >
+              <X size={22} />
+            </button>
+
+            <h3 className="text-2xl sm:text-3xl font-bold mb-4 text-center">
+              Choose How You’d Like to Book
+            </h3>
+
+            <p className="text-gray-500 dark:text-gray-400 text-center mb-6">
+              You can book in two ways:
+            </p>
+
+            <div className="space-y-5">
+
+              <div className="border rounded-xl p-4 hover:border-primary transition">
+                <h4 className="font-semibold text-lg mb-1">
+                  Pro Online Booking System
+                </h4>
+                <p className="text-sm text-gray-500 dark:text-gray-400">
+                  Our automated system manages our live calendar.  
+                  Once a slot is booked, it is instantly removed — so no double bookings.
+                </p>
+              </div>
+
+              <div className="border rounded-xl p-4 hover:border-primary transition">
+                <h4 className="font-semibold text-lg mb-1">
+                  WhatsApp Booking
+                </h4>
+                <p className="text-sm text-gray-500 dark:text-gray-400">
+                  Message us directly and we’ll manually confirm your appointment.
+                </p>
+              </div>
+
+            </div>
+
+            <button
+              onClick={() => setShowPopup(false)}
+              className="mt-6 w-full bg-primary text-white py-3 rounded-lg font-semibold hover:scale-105 transition"
+            >
+              CLOSE
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

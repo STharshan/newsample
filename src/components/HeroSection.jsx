@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Instagram, Facebook, ArrowDown } from "lucide-react";
 import { HeroContent } from "../global";
 
@@ -8,8 +8,18 @@ export default function HeroSection({
   tagline = HeroContent.tagline,
   title = HeroContent.title,
 }) {
+  const [showPopup, setShowPopup] = useState(false);
+
+  const handleSocialClick = () => {
+    setShowPopup(true);   // Only show popup
+  };
+
+  const handleCancel = () => {
+    setShowPopup(false);  // Close popup
+  };
+
   return (
-    <div id="#" className="relative h-screen w-full overflow-hidden bg-black">
+    <div className="relative h-screen w-full overflow-hidden bg-black">
       <div className="max-w-7xl mx-auto">
 
         {/* Background Video */}
@@ -19,33 +29,40 @@ export default function HeroSection({
           muted
           loop
           playsInline
-          poster="https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?q=80&w=2070"
         >
           <source src="/video.mp4" type="video/mp4" />
         </video>
 
         {/* Overlay */}
-        <div
-          className="absolute inset-0"
-          style={{
-            background:
-              "linear-gradient(to bottom, rgba(0,0,0,0.35) 0%, rgba(0,0,0,0.65) 100%)",
-          }}
-        />
+        <div className="absolute inset-0 bg-black/50" />
 
         {/* Social Media */}
         <div className="absolute left-5 md:left-8 top-[30%] flex flex-col gap-8 md:gap-10 z-20">
 
-          <div className="flex flex-col items-center gap-3">
+          {/* Instagram */}
+          <div
+            onClick={handleSocialClick}
+            className="flex flex-col items-center gap-3 cursor-pointer hover:scale-110 transition"
+          >
             <Instagram className="text-white" size={22} />
-            <span className="text-white text-sm" style={{ writingMode: "vertical-rl" }}>
+            <span
+              className="text-white text-sm"
+              style={{ writingMode: "vertical-rl" }}
+            >
               Instagram
             </span>
           </div>
 
-          <div className="flex flex-col items-center gap-3">
+          {/* Facebook */}
+          <div
+            onClick={handleSocialClick}
+            className="flex flex-col items-center gap-3 cursor-pointer hover:scale-110 transition"
+          >
             <Facebook className="text-white" size={22} />
-            <span className="text-white text-sm" style={{ writingMode: "vertical-rl" }}>
+            <span
+              className="text-white text-sm"
+              style={{ writingMode: "vertical-rl" }}
+            >
               Facebook
             </span>
           </div>
@@ -65,9 +82,30 @@ export default function HeroSection({
 
         {/* Scroll Down */}
         <div className="absolute bottom-8 right-8 md:right-16 flex items-center gap-3 text-white z-20">
-          <span className="text-[10px] md:text-xs tracking-[0.3em]">SCROLL DOWN</span>
+          <span className="text-[10px] md:text-xs tracking-[0.3em]">
+            SCROLL DOWN
+          </span>
           <ArrowDown className="animate-bounce" size={16} />
         </div>
+
+        {/* Transparent Popup */}
+        {showPopup && (
+          <div className="fixed inset-0 flex items-center justify-center z-50 backdrop-blur-md bg-black/40">
+            <div className="bg-white/10 backdrop-blur-xl border border-white/20 p-8 rounded-2xl max-w-md text-center text-white shadow-2xl">
+              <p className="mb-6">
+                When you click this button, you’ll be redirected to our official
+                social media page to see updates, content and customer work.
+              </p>
+
+              <button
+                onClick={handleCancel}
+                className="px-6 py-2 bg-white/20 hover:bg-white/30 transition rounded-xl"
+              >
+                Cancel
+              </button>
+            </div>
+          </div>
+        )}
 
       </div>
     </div>

@@ -31,17 +31,17 @@ export const Services = [
       "Easier cleaning and maintenance",
     ],
   },
-{
-  subtitle: "Machine Polishing",
-  image: "/m.webp",
-  coverage: [
-    "Removes deeper swirl marks and surface imperfections",
-    "Restores high-gloss shine and paint clarity",
-    "Reduces light scratches and oxidation",
-    "Professional machine-applied compounds and polish",
-    "Leaves paintwork smooth, vibrant, and refreshed",
-  ],
-},
+  {
+    subtitle: "Machine Polishing",
+    image: "/m.webp",
+    coverage: [
+      "Removes deeper swirl marks and surface imperfections",
+      "Restores high-gloss shine and paint clarity",
+      "Reduces light scratches and oxidation",
+      "Professional machine-applied compounds and polish",
+      "Leaves paintwork smooth, vibrant, and refreshed",
+    ],
+  },
 ];
 
 export const reviewsData = [
@@ -50,10 +50,18 @@ export const reviewsData = [
     name: "SARAH L.",
     initial: "S",
     review:
-      "I had my interior detailing done at CarWash, and they did an incredible job! My car looks and smells like new again. The attention to detail and the level of cleanliness they achieved exceeded my expectations. Highly recommended!",
+      `“Absolutely Outstanding Service”
+
+(Sample Review – Your real customer reviews will appear here)
+
+This is where one of your genuine 5-star Google reviews would be displayed.
+
+We can connect your website directly to Google, so your latest verified 5-star reviews automatically show here — keeping your site fresh, credible, and up to date.
+
+Psychological Impact: Visible five-star reviews build trust instantly and reduce customer hesitation dramatically.`,
     rating: 5,
     service: "AUDI TT / Ceramic Coating",
-    image: "/im1.jpeg",
+    image: "/ABOUT.jpg",
   },
   {
     id: 2,
